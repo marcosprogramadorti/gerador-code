@@ -5,8 +5,8 @@ import java.io.IOException;
 public interface IArquivo {
 	String obterNome();
 	String obterDiretorio();
-	String alterarNome(String nome);
-	String alterarDiretorio(String nome);
-	StringBuilder converterModelo(StringBuilder modelo );
+	void alterarNome(String nome);
+	void alterarDiretorio(String diretorio);
+	//StringBuilder converterModelo(StringBuilder modelo );
 	boolean produzir(StringBuilder arq) throws IOException;
 }
