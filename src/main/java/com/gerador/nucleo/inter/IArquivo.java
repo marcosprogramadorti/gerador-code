@@ -8,5 +8,5 @@ public interface IArquivo {
 	void alterarNome(String nome);
 	void alterarDiretorio(String diretorio);
 	//StringBuilder converterModelo(StringBuilder modelo );
-	boolean produzir(StringBuilder arq) throws IOException;
+	boolean produzir(StringBuilder arq, boolean adicionar) throws IOException;
 }
