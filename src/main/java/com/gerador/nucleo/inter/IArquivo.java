@@ -7,6 +7,5 @@ public interface IArquivo {
 	String obterDiretorio();
 	void alterarNome(String nome);
 	void alterarDiretorio(String diretorio);
-	//StringBuilder converterModelo(StringBuilder modelo );
 	boolean produzir(StringBuilder arq, boolean adicionar) throws IOException;
 }

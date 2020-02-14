@@ -15,6 +15,7 @@ public class Atributos implements IAtributos {
 
 	@Override
 	public String geraListDeAtributos() {
+		//falta os @Colluns
 		StringBuilder r = new StringBuilder();
 		for (Atributo a : atributos) {
 			r.append(a.getModificador()).append(" ").append(a.getTipo()).append(" ").append(a.getNome()).append(";\n");

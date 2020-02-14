@@ -1,4 +1,4 @@
-package com.gerador.nucleo.tipos;
+package com.gerador.entidades;
 
 public class Atributo {
 	
