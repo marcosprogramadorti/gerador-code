@@ -2,10 +2,11 @@ package com.gerador.nucleo.impl;
 
 import java.io.IOException;
 
+import com.gerador.entidades.ArqClassJava;
+import com.gerador.entidades.Cabecalho;
 import com.gerador.nucleo.inter.IEntidade;
-import com.gerador.nucleo.tipos.Cabecalho;
 
-public class Entidade extends ArquivoTipoClassJava implements IEntidade {
+public class Entidade extends ArqClassJava implements IEntidade {
 
 	
 	@Override

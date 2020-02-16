@@ -1,7 +1,15 @@
 package com.gerador.entidades;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Atributo")
 public class Atributo {
 	
+	@Id
+	private Long idAtributo;
 	private String modificador;
 	private String tipo;
 	private String nome;
@@ -9,6 +17,12 @@ public class Atributo {
 	private String tipoId; 
 	private int tamanho;
 	private String obrigatorio;
+	public Long getIdAtributo() {
+		return idAtributo;
+	}
+	public void setIdAtributo(Long idAtributo) {
+		this.idAtributo = idAtributo;
+	}
 	public String getModificador() {
 		return modificador;
 	}
@@ -51,7 +65,8 @@ public class Atributo {
 	public void setObrigatorio(String obrigatorio) {
 		this.obrigatorio = obrigatorio;
 	}
-
+	
+	
 	
 	
 	

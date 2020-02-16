@@ -1,4 +1,4 @@
-package com.gerador;
+package com.gerador.entidades;
 
 import java.io.Serializable;
 import java.math.BigInteger;
