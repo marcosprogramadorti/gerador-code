@@ -72,11 +72,11 @@ public class ArqClassJava  {
 		this.tPackage = tPackage;
 	}
 
-	public Set<String> gettImports() {
+	public Set<TImport> gettImports() {
 		return tImports;
 	}
 
-	public void settImports(Set<String> tImports) {
+	public void settImports(Set<TImport> tImports) {
 		this.tImports = tImports;
 	}
 
@@ -87,6 +87,7 @@ public class ArqClassJava  {
 	public void settClass(tClass tClass) {
 		this.tClass = tClass;
 	}
+
 	
 	
 	

@@ -138,17 +138,14 @@ public class Projeto {
 		this.descricao = descricao;
 	}
 
-	public Set<ArquivoTipoClassJava> getEntidades() {
+	public Set<ArqClassJava> getEntidades() {
 		return entidades;
 	}
 
-	public void setEntidades(Set<ArquivoTipoClassJava> entidades) {
+	public void setEntidades(Set<ArqClassJava> entidades) {
 		this.entidades = entidades;
 	}
 
-	
-	
-	
 	
 	
 }

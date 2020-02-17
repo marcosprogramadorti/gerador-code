@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,9 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "modelo")
 public class Modelo {
 	
 	@Id
@@ -21,6 +25,8 @@ public class Modelo {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="idModelo", unique=true, nullable=false)
 	private Long idModelo;
+	
+	private String nome;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "modelo_arq_class_java",  joinColumns = { 
@@ -34,28 +40,28 @@ public class Modelo {
 			@JoinColumn(name = "idModelo", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "idArqPom", 
 					nullable = false, updatable = false) })
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name="idArqPom")
 	private ArqPom arqPom;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "modelo_arq_pom",  joinColumns = { 
 			@JoinColumn(name = "idModelo", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "idArqPom", 
+			inverseJoinColumns = { @JoinColumn(name = "idArqProperties", 
 					nullable = false, updatable = false) })
 	private List<ArqProperties> listaArqPropertie;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "modelo_arq_pom",  joinColumns = { 
+	@JoinTable(name = "modelo_arq_sql",  joinColumns = { 
 			@JoinColumn(name = "idModelo", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "idArqPom", 
+			inverseJoinColumns = { @JoinColumn(name = "idArqSql", 
 					nullable = false, updatable = false) })
 	private List<ArqSql> listaArqSql;
 	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "modelo_arq_pom",  joinColumns = { 
+	@JoinTable(name = "modelo_arq_outro",  joinColumns = { 
 			@JoinColumn(name = "idModelo", nullable = false, updatable = false) }, 
-			inverseJoinColumns = { @JoinColumn(name = "idArqPom", 
+			inverseJoinColumns = { @JoinColumn(name = "idArqOutro", 
 					nullable = false, updatable = false) })
 	private List<ArqOutro> listaArqOutro;
 

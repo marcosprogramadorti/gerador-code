@@ -1,7 +1,11 @@
 package com.gerador.entidades;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "arq_properties")
 public class ArqProperties {
 	
 	@Id	

@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Table(name = "propriedade")
 public class Propriedade {
 	
+	@Id
 	@SequenceGenerator(name="pk_sequence",sequenceName="propriedade_id_seq", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
 	@Column(name="idPropriedade", unique=true, nullable=false)
