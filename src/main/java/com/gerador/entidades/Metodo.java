@@ -10,17 +10,18 @@ public class Metodo {
 	
 	@Id
 	private Long idMetodo;
-	private StringBuilder descricao;
+	private String descricao;
+	
 	public Long getIdMetodo() {
 		return idMetodo;
 	}
 	public void setIdMetodo(Long idMetodo) {
 		this.idMetodo = idMetodo;
 	}
-	public StringBuilder getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
-	public void setDescricao(StringBuilder descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 	
