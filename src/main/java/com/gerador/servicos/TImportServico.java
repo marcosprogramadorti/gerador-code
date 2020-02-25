@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.TImport;
 import com.gerador.repositorys.ITImport;
-import com.gerador.servicos.inter.ITImportServico;
+import com.gerador.servicos.inter.IServico;
+
 
 @Service
-public class TImportServico implements ITImportServico {
+public class TImportServico implements IServico<TImport> {
 	
 	@Autowired
 	ITImport rep;
@@ -29,8 +30,8 @@ public class TImportServico implements ITImportServico {
 	}
 
 	@Override
-	public List<TImport> pesquisarPorDescricao(String descricao) {
-		List<TImport> r = rep.findByDescricaoContainingIgnoreCase(descricao);
+	public List<TImport> pesquisar(TImport entidade) {
+		List<TImport> r = rep.findByDescricaoContainingIgnoreCase(entidade.getDescricao());
 		return r;
 	}
 

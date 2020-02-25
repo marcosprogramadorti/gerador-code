@@ -8,21 +8,21 @@ import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.Metodo;
 import com.gerador.repositorys.IMetodo;
-import com.gerador.servicos.inter.IMetodoServico;
+import com.gerador.servicos.inter.IServico;
 
 
 
 
 
 @Service
-public class MetodoServico implements IMetodoServico {
+public class MetodoServico implements IServico<Metodo> {
 	
 	@Autowired
 	IMetodo rep;
 	
 	@Override
-	public Metodo salvar(Metodo metodo) {
-		Metodo salva = rep.save(metodo);
+	public Metodo salvar(Metodo entidade) {
+		Metodo salva = rep.save(entidade);
 		return salva;
 	}
 
@@ -33,8 +33,8 @@ public class MetodoServico implements IMetodoServico {
 	}
 
 	@Override
-	public List<Metodo> pesquisarPorDescricao(String descricao) {
-		List<Metodo> r = rep.findByDescricaoContainingIgnoreCase(descricao);
+	public List<Metodo> pesquisar(Metodo entidade) {
+		List<Metodo> r = rep.findByDescricaoContainingIgnoreCase(entidade.getDescricao());
 		return r;
 	}
 

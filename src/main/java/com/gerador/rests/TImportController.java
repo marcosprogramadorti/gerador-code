@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.TImport;
+import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.TImportServico;
 
 @RestController
 @RequestMapping("/timport")
-public class TImportController {
+public class TImportController  implements IRecurso<TImport>  {
 	
 	@Autowired
     private TImportServico servico;
@@ -36,9 +37,9 @@ public class TImportController {
         return servico.buscarPorId(id);
     }
 	
-	@GetMapping("/pesquisarPorDescricao")
-	public List<TImport> pesquisarPorDescricao(String descricao) {
-        return servico.pesquisarPorDescricao(descricao);
+	@GetMapping("/pesquisar")
+	public List<TImport> pesquisar(TImport entidade) {
+        return servico.pesquisar(entidade);
     }
 	
 	@PostMapping("/salvar")

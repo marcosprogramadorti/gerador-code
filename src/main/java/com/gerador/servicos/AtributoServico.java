@@ -8,19 +8,19 @@ import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.Atributo;
 import com.gerador.repositorys.IAtributo;
-import com.gerador.servicos.inter.IAtributoServico;
+import com.gerador.servicos.inter.IServico;
 
 
 
 @Service
-public class AtributoServico implements IAtributoServico {
+public class AtributoServico implements IServico<Atributo> {
 	
 	@Autowired
 	IAtributo rep;
 	
 	@Override
-	public Atributo salvar(Atributo atributo) {
-		Atributo salva = rep.save(atributo);
+	public Atributo salvar(Atributo entidade) {
+		Atributo salva = rep.save(entidade);
 		return salva;
 	}
 
@@ -31,8 +31,8 @@ public class AtributoServico implements IAtributoServico {
 	}
 
 	@Override
-	public List<Atributo> pesquisarPorNome(String nome) {
-		List<Atributo> r = rep.findByNomeContainingIgnoreCase(nome);
+	public List<Atributo> pesquisar(Atributo entidade) {
+		List<Atributo> r = rep.findByNomeContainingIgnoreCase(entidade.getNome());
 		return r;
 	}
 

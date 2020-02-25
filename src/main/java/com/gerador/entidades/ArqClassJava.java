@@ -38,7 +38,7 @@ public class ArqClassJava  {
 	
 	@ManyToOne
 	@JoinColumn(name="idTClass")
-	private tClass tClass;
+	private TClass tClass;
 
 	public Long getIdArqClassJava() {
 		return idArqClassJava;
@@ -80,11 +80,11 @@ public class ArqClassJava  {
 		this.tImports = tImports;
 	}
 
-	public tClass gettClass() {
+	public TClass gettClass() {
 		return tClass;
 	}
 
-	public void settClass(tClass tClass) {
+	public void settClass(TClass tClass) {
 		this.tClass = tClass;
 	}
 

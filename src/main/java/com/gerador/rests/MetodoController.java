@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Metodo;
+import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.MetodoServico;
 
 
@@ -20,7 +21,7 @@ import com.gerador.servicos.MetodoServico;
 
 @RestController
 @RequestMapping("/metodo")
-public class MetodoController {
+public class MetodoController implements IRecurso<Metodo> {
 	
 	@Autowired
     private MetodoServico servico;
@@ -40,19 +41,19 @@ public class MetodoController {
         return servico.buscarPorId(id);
     }
 	
-	@GetMapping("/pesquisarPorDescricao")
-	public List<Metodo> pesquisarPorDescricao(String descricao) {
-        return servico.pesquisarPorDescricao(descricao);
+	@GetMapping("/pesquisar")
+	public List<Metodo> pesquisar(Metodo entidade) {
+        return servico.pesquisar(entidade);
     }
 	
 	@PostMapping("/salvar")
-	public Metodo salvar(@RequestBody Metodo atributo) {
-       return servico.salvar(atributo);
+	public Metodo salvar(@RequestBody Metodo entidade) {
+       return servico.salvar(entidade);
        
     }
 	@PutMapping("/atualizar")
-	public Metodo atualizar(Metodo atributo) {
-       return servico.salvar(atributo);
+	public Metodo atualizar(Metodo entidade) {
+       return servico.salvar(entidade);
        
     }
 	

@@ -11,18 +11,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerador.entidades.Atributo;
+import com.gerador.entidades.TClass;
 import com.gerador.rests.inter.IRecurso;
-import com.gerador.servicos.AtributoServico;
+import com.gerador.servicos.TClassServico;
+
+
 
 
 
 @RestController
 @RequestMapping("/atributo")
-public class AtributoController implements IRecurso<Atributo>{
+public class TClassController implements IRecurso<TClass> {
 	
 	@Autowired
-    private AtributoServico servico;
+    private TClassServico servico;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
@@ -30,32 +32,30 @@ public class AtributoController implements IRecurso<Atributo>{
     }
 	
 	@GetMapping("/lista")
-	public List<Atributo> lista() {
+	public List<TClass> lista() {
         return servico.lista();
     }
 	
 	@GetMapping("/buscarPorId")
-	public Atributo buscarPorId(Long id) {
+	public TClass buscarPorId(Long id) {
         return servico.buscarPorId(id);
     }
 	
 	@GetMapping("/pesquisar")
-	public List<Atributo> pesquisar(Atributo entidade) {
+	public List<TClass> pesquisar(TClass entidade) {
         return servico.pesquisar(entidade);
     }
 	
 	@PostMapping("/salvar")
-	public Atributo salvar(@RequestBody Atributo entidade) {
+	public TClass salvar(@RequestBody TClass entidade) {
        return servico.salvar(entidade);
        
     }
 	@PutMapping("/atualizar")
-	public Atributo atualizar(Atributo atributo) {
-       return servico.salvar(atributo);
+	public TClass atualizar(TClass entidade) {
+       return servico.salvar(entidade);
        
     }
-
-	
 	
 	
 	
