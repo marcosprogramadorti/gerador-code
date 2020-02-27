@@ -1,48 +1,39 @@
 
 package com.gerador.servicos;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.Atributo;
 import com.gerador.repositorys.IAtributo;
-import com.gerador.servicos.inter.IServico;
 
 
 
 @Service
-public class AtributoServico implements IServico<Atributo> {
+public class AtributoServico {
+	
+	@Autowired
+	Servico<Atributo, Long> s;
 	
 	@Autowired
 	IAtributo rep;
 	
-	@Override
 	public Atributo salvar(Atributo entidade) {
-		Atributo salva = rep.save(entidade);
-		return salva;
+		return s.salvar(entidade, rep);
 	}
 
-	@Override
 	public List<Atributo> lista() {
-		return rep.findAll();
-		
+		return s.lista(rep);
 	}
 
-	@Override
+	
 	public List<Atributo> pesquisar(Atributo entidade) {
-		List<Atributo> r = rep.findByNomeContainingIgnoreCase(entidade.getNome());
-		return r;
+		return s.pesquisar(entidade, rep, entidade.getNome());
 	}
 
-	@Override
 	public Atributo buscarPorId(Long id) {
-		Optional<Atributo> r = rep.findById(id);
-		if (r.isPresent()) {
-			return r.get();
-		}
-		return null;
+		return s.buscarPorId(id, rep);
 	}
 	
 	

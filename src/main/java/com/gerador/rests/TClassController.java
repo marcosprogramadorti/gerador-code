@@ -20,7 +20,7 @@ import com.gerador.servicos.TClassServico;
 
 
 @RestController
-@RequestMapping("/atributo")
+@RequestMapping("/class")
 public class TClassController implements IRecurso<TClass> {
 	
 	@Autowired

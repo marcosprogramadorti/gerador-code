@@ -40,7 +40,7 @@ public class AtributoController implements IRecurso<Atributo>{
     }
 	
 	@GetMapping("/pesquisar")
-	public List<Atributo> pesquisar(Atributo entidade) {
+	public List<Atributo> pesquisar(@RequestBody Atributo entidade) {
         return servico.pesquisar(entidade);
     }
 	
