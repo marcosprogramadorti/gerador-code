@@ -11,54 +11,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gerador.entidades.TClass;
-import com.gerador.repositorys.ITClass;
+import com.gerador.entidades.Propriedade;
+import com.gerador.repositorys.IPropriedade;
 import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.Servico;
 
-
 @RestController
-@RequestMapping("/class")
-public class TClassController implements IRecurso<TClass> {
-	
+@RequestMapping("/propriedade")
+public class PropriedadeController implements IRecurso<Propriedade> {
+
 	@Autowired
-    private Servico<TClass, Long> servico;
-	
+	private Servico<Propriedade, Long> servico;
+
 	@Autowired
-    private ITClass rep;
-	
+	private IPropriedade rep;
+
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
-        return "recurso ativo";
-    }
-	
+		return "recurso ativo";
+	}
+
 	@GetMapping("/lista")
-	public List<TClass> lista() {
-        return servico.lista(rep);
-    }
-	
+	public List<Propriedade> lista() {
+		return servico.lista(rep);
+	}
+
 	@GetMapping("/buscarPorId")
-	public TClass buscarPorId(Long id) {
-        return servico.buscarPorId(id, rep);
-    }
-	
+	public Propriedade buscarPorId(Long id) {
+		return servico.buscarPorId(id, rep);
+	}
+
 	@GetMapping("/pesquisar")
-	public List<TClass> pesquisar(TClass entidade) {
-        return servico.pesquisar(rep, entidade.getNome());
-    }
-	
+	public List<Propriedade> pesquisar(@RequestBody Propriedade entidade) {
+		return servico.pesquisar(rep, entidade.getChave());
+	}
+
 	@PostMapping("/salvar")
-	public TClass salvar(@RequestBody TClass entidade) {
-       return servico.salvar(entidade, rep);
-       
-    }
+	public Propriedade salvar(@RequestBody Propriedade entidade) {
+		return servico.salvar(entidade, rep);
+
+	}
+
 	@PutMapping("/atualizar")
-	public TClass atualizar(TClass entidade) {
-       return servico.salvar(entidade, rep);
-       
-    }
-	
-	
-	
+	public Propriedade atualizar(Propriedade entidade) {
+		return servico.salvar(entidade, rep);
+
+	}
 
 }

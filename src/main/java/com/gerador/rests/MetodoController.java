@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Metodo;
+import com.gerador.repositorys.IMetodo;
 import com.gerador.rests.inter.IRecurso;
-import com.gerador.servicos.MetodoServico;
-
-
-
-
+import com.gerador.servicos.Servico;
 
 @RestController
 @RequestMapping("/metodo")
 public class MetodoController implements IRecurso<Metodo> {
 	
 	@Autowired
-    private MetodoServico servico;
+    private Servico<Metodo, Long> servico;
+	
+	@Autowired
+    private IMetodo rep;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
@@ -33,27 +33,27 @@ public class MetodoController implements IRecurso<Metodo> {
 	
 	@GetMapping("/lista")
 	public List<Metodo> lista() {
-        return servico.lista();
+        return servico.lista(rep);
     }
 	
 	@GetMapping("/buscarPorId")
 	public Metodo buscarPorId(Long id) {
-        return servico.buscarPorId(id);
+        return servico.buscarPorId(id, rep);
     }
 	
 	@GetMapping("/pesquisar")
 	public List<Metodo> pesquisar(Metodo entidade) {
-        return servico.pesquisar(entidade);
+        return servico.pesquisar(rep, entidade.getDescricao());
     }
 	
 	@PostMapping("/salvar")
 	public Metodo salvar(@RequestBody Metodo entidade) {
-       return servico.salvar(entidade);
+       return servico.salvar(entidade, rep);
        
     }
 	@PutMapping("/atualizar")
 	public Metodo atualizar(Metodo entidade) {
-       return servico.salvar(entidade);
+       return servico.salvar(entidade, rep);
        
     }
 	

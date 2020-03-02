@@ -12,31 +12,37 @@ public class ArqPom {
 	private String nome;
 	private String diretorio;
 	private StringBuilder descricao;
+
 	public Long getIdArqPom() {
 		return idArqPom;
 	}
+
 	public void setIdArqPom(Long idArqPom) {
 		this.idArqPom = idArqPom;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getDiretorio() {
 		return diretorio;
 	}
+
 	public void setDiretorio(String diretorio) {
 		this.diretorio = diretorio;
 	}
+
 	public StringBuilder getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(StringBuilder descricao) {
 		this.descricao = descricao;
 	}
-	
-	
-	
+
 }

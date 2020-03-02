@@ -12,15 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.TImport;
+import com.gerador.repositorys.ITImport;
 import com.gerador.rests.inter.IRecurso;
-import com.gerador.servicos.TImportServico;
+import com.gerador.servicos.Servico;
+
 
 @RestController
 @RequestMapping("/timport")
 public class TImportController  implements IRecurso<TImport>  {
 	
 	@Autowired
-    private TImportServico servico;
+    private Servico<TImport, Long> servico;
+	
+	@Autowired
+    private ITImport rep;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
@@ -29,27 +34,27 @@ public class TImportController  implements IRecurso<TImport>  {
 	
 	@GetMapping("/lista")
 	public List<TImport> lista() {
-        return servico.lista();
+        return servico.lista(rep);
     }
 	
 	@GetMapping("/buscarPorId")
 	public TImport buscarPorId(Long id) {
-        return servico.buscarPorId(id);
+        return servico.buscarPorId(id, rep);
     }
 	
 	@GetMapping("/pesquisar")
 	public List<TImport> pesquisar(TImport entidade) {
-        return servico.pesquisar(entidade);
+        return servico.pesquisar(rep, entidade.getDescricao());
     }
 	
 	@PostMapping("/salvar")
-	public TImport salvar(@RequestBody TImport timport) {
-       return servico.salvar(timport);
+	public TImport salvar(@RequestBody TImport entidade) {
+       return servico.salvar(entidade, rep);
        
     }
 	@PutMapping("/atualizar")
-	public TImport atualizar(TImport timport) {
-       return servico.salvar(timport);
+	public TImport atualizar(TImport entidade) {
+       return servico.salvar(entidade, rep);
        
     }
 	

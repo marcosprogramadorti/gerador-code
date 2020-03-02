@@ -22,6 +22,10 @@
 		<webjars-bootstrap.version>4.1.3</webjars-bootstrap.version>
 		<webjars-jquery-ui.version>1.12.1</webjars-jquery-ui.version>
 		<webjars-jquery.version>3.3.1-1</webjars-jquery.version>
+		<sonar.projectKey>marcosprogramadorti_gerador-code</sonar.projectKey>
+		<sonar.organization>marcosprogramadorti</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.login>040877b8d1b30b6d8a26deb591494787718a66ce</sonar.login>
 	</properties>
 
 	<dependencies>
@@ -53,10 +57,10 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 		<dependency>
-		<groupId>com.h2database</groupId>
-		<artifactId>h2</artifactId>
-		<scope>runtime</scope>
-		<version>1.4.199</version>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+			<version>1.4.199</version>
 		</dependency>
 		<dependency>
 			<groupId>com.zaxxer</groupId>
