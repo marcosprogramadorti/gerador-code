@@ -56,7 +56,7 @@ public class Projeto {
 			@JoinColumn(name = "idProjeto", nullable = false, updatable = false) }, 
 			inverseJoinColumns = { @JoinColumn(name = "idEntidade", 
 					nullable = false, updatable = false) })
-	private Set<ArqClassJava> entidades;
+	private Set<Arquivo> entidades;
 
 	public Long getIdProjeto() {
 		return idProjeto;
@@ -138,11 +138,11 @@ public class Projeto {
 		this.descricao = descricao;
 	}
 
-	public Set<ArqClassJava> getEntidades() {
+	public Set<Arquivo> getEntidades() {
 		return entidades;
 	}
 
-	public void setEntidades(Set<ArqClassJava> entidades) {
+	public void setEntidades(Set<Arquivo> entidades) {
 		this.entidades = entidades;
 	}
 
