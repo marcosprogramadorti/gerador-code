@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.gerador.entidades.TImport;
 
 @Repository
-public interface ITImport extends JpaRepository<TImport, Long>, FindByDescricao<TImport>{
+public interface ITImport extends JpaRepository<TImport, Long>, FindByDescricao<TImport>, IServicoGenerico{
 	
 }
 		

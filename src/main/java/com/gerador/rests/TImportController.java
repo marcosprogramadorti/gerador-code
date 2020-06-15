@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gerador.dto.TImportDTO;
 import com.gerador.entidades.TImport;
 import com.gerador.repositorys.ITImport;
 import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.Servico;
+import com.gerador.servicos.ServicoTeste;
 
 
 @RestController
@@ -23,6 +25,9 @@ public class TImportController  implements IRecurso<TImport>  {
 	
 	@Autowired
     private Servico<TImport, Long> servico;
+	
+	@Autowired
+    private ServicoTeste<TImport,TImportDTO, Long> servicoTeste;
 	
 	@Autowired
     private ITImport rep;
@@ -55,6 +60,12 @@ public class TImportController  implements IRecurso<TImport>  {
 	@PutMapping("/atualizar")
 	public TImport atualizar(TImport entidade) {
        return servico.salvar(entidade, rep);
+       
+    }
+	
+	@PostMapping("/salvarTeste")
+	public TImportDTO salvarTeste(@RequestBody TImportDTO entidade) throws InstantiationException, IllegalAccessException {
+       return servicoTeste.salvar(entidade, rep, TImport.class);
        
     }
 	
