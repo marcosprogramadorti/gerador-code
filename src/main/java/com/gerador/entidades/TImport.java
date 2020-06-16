@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "TImport")
+@Table(name = "timport")
 public class TImport {
 	
 	@Id

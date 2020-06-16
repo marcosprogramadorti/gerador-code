@@ -5,7 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Atributo")
+@Table(name = "atributo")
 public class Atributo {
 	@Id
 	private Long idAtributo;

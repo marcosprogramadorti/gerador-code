@@ -18,7 +18,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "class")
+@Table(name = "tclass")
 public class TClass implements Serializable {
 
 	/**
