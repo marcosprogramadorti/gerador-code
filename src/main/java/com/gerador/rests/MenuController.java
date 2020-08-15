@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Menu;
 import com.gerador.repositorys.IMenu;
-import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.Servico;
 
 
@@ -21,7 +20,7 @@ import com.gerador.servicos.Servico;
 
 @RestController
 @RequestMapping("/menu")
-public class MenuController implements IRecurso<Menu> {
+public class MenuController  {
 	
 	@Autowired
     private Servico<Menu, Long> servico;
@@ -44,10 +43,7 @@ public class MenuController implements IRecurso<Menu> {
         return servico.buscarPorId(id, rep);
     }
 	
-	@GetMapping("/pesquisar")
-	public List<Menu> pesquisar(@RequestBody Menu entidade) {
-        return servico.pesquisar(rep, entidade.getLabel());
-    }
+	
 	
 	@PostMapping("/salvar")
 	public Menu salvar(@RequestBody Menu entidade) {
