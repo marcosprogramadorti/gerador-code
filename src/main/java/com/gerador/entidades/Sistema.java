@@ -17,10 +17,10 @@ import javax.persistence.Table;
 public class Sistema {
 
 	@Id
-//	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_id_seq", allocationSize = 1)
-//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "sistema_id", unique = true, nullable = false)
-	private Long idSistema;
+	private int idSistema;
 	private String sigla;
 	private String contexto;
 	private String descricao;
@@ -29,11 +29,11 @@ public class Sistema {
 	@JoinColumn(name = "sistema_id")
 	private Set<Menu> menu;
 
-	public Long getIdSistema() {
+	public int getIdSistema() {
 		return idSistema;
 	}
 
-	public void setIdSistema(Long idSistema) {
+	public void setIdSistema(int idSistema) {
 		this.idSistema = idSistema;
 	}
 
