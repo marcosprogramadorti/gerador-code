@@ -1,0 +1,74 @@
+package com.gerador.entidades;
+
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sistema")
+public class Sistema  {
+	
+	@Id
+	@SequenceGenerator(name="pk_sequence",sequenceName="sistema_id_seq", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+	@Column(name="sistema_id", unique=true, nullable=false)	
+	private Long idSistema;
+	private String sigla;
+	private String contexto;
+	private StringBuilder descricao;
+	
+	@OneToMany
+	@JoinColumn(name="sistema_id")
+	private Set<Menu> menu;
+
+	public Long getIdSistema() {
+		return idSistema;
+	}
+
+	public void setIdSistema(Long idSistema) {
+		this.idSistema = idSistema;
+	}
+
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
+	}
+
+	public String getContexto() {
+		return contexto;
+	}
+
+	public void setContexto(String contexto) {
+		this.contexto = contexto;
+	}
+
+	public StringBuilder getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(StringBuilder descricao) {
+		this.descricao = descricao;
+	}
+
+	public Set<Menu> getMenu() {
+		return menu;
+	}
+
+	public void setMenu(Set<Menu> menu) {
+		this.menu = menu;
+	}
+	
+	
+		
+}

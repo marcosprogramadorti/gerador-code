@@ -32,6 +32,7 @@ public class Main {
 	@Value("${spring.datasource.url}")
 	private String dbUrl;
 
+	@SuppressWarnings("unused")
 	@Autowired
 	private DataSource dataSource;
 
