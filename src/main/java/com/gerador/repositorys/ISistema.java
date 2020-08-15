@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.gerador.entidades.Sistema;
 
 @Repository
-public interface ISistema extends JpaRepository<Sistema, Long>, FindByDescricao<Sistema>, IServicoGenerico{
+public interface ISistema extends JpaRepository<Sistema, Long>,  IServicoGenerico{
 	
 }
 		

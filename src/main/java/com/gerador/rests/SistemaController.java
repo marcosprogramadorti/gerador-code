@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Sistema;
 import com.gerador.repositorys.ISistema;
-import com.gerador.rests.inter.IRecurso;
 import com.gerador.servicos.Servico;
 
 
@@ -21,7 +20,7 @@ import com.gerador.servicos.Servico;
 
 @RestController
 @RequestMapping("/sistema")
-public class SistemaController implements IRecurso<Sistema> {
+public class SistemaController {
 	
 	@Autowired
     private Servico<Sistema, Long> servico;
@@ -44,10 +43,6 @@ public class SistemaController implements IRecurso<Sistema> {
         return servico.buscarPorId(id, rep);
     }
 	
-	@GetMapping("/pesquisar")
-	public List<Sistema> pesquisar(@RequestBody Sistema entidade) {
-        return servico.pesquisar(rep, entidade.getSigla());
-    }
 	
 	@PostMapping("/salvar")
 	public Sistema salvar(@RequestBody Sistema entidade) {
