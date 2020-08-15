@@ -14,19 +14,19 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "sistema")
-public class Sistema  {
-	
+public class Sistema {
+
 	@Id
-	@SequenceGenerator(name="pk_sequence",sequenceName="sistema_id_seq", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
-	@Column(name="sistema_id", unique=true, nullable=false)	
+//	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_id_seq", allocationSize = 1)
+//	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
+	@Column(name = "sistema_id", unique = true, nullable = false)
 	private Long idSistema;
 	private String sigla;
 	private String contexto;
-	private StringBuilder descricao;
-	
+	private String descricao;
+
 	@OneToMany
-	@JoinColumn(name="sistema_id")
+	@JoinColumn(name = "sistema_id")
 	private Set<Menu> menu;
 
 	public Long getIdSistema() {
@@ -53,11 +53,11 @@ public class Sistema  {
 		this.contexto = contexto;
 	}
 
-	public StringBuilder getDescricao() {
+	public String getDescricao() {
 		return descricao;
 	}
 
-	public void setDescricao(StringBuilder descricao) {
+	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
 
@@ -68,7 +68,5 @@ public class Sistema  {
 	public void setMenu(Set<Menu> menu) {
 		this.menu = menu;
 	}
-	
-	
-		
+
 }
