@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Sistema {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_sistema_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "sistema_id", unique = true, nullable = false)
 	private int idSistema;

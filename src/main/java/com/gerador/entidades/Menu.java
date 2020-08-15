@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Menu {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "menu_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "menu_menu_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 
 	@Column(name = "menu_id", unique = true, nullable = false)
