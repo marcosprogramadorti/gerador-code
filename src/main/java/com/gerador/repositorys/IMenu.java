@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.gerador.entidades.Menu;
 
 @Repository
-public interface IMenu extends JpaRepository<Menu, Long>, FindByDescricao<Menu>, IServicoGenerico{
+public interface IMenu extends JpaRepository<Menu, Long>,  IServicoGenerico{
 	
 }
 		
