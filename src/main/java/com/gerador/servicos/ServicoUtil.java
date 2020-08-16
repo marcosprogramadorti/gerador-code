@@ -15,7 +15,34 @@ import java.util.regex.Pattern;
 
 import javax.sql.DataSource;
 
+import com.gerador.dto.DataDTO;
+import com.gerador.dto.MenuDTO;
+import com.gerador.dto.SistemaDTO;
+import com.gerador.entidades.Sistema;
+
 public class ServicoUtil {
+	
+//	public static SistemaDTO ConvertSitemaTOSistemaDTO(Sistema s) {
+//		
+//		SistemaDTO sDTO = new SistemaDTO();
+//		MenuDTO mDTO = new MenuDTO();
+//		mDTO.setData(new ArrayList<DataDTO>());
+//		sDTO.setMenu(mDTO);
+//		
+//		sDTO.setMenu(mDTO);
+//		if (s != null) {
+//			sDTO.setContexto(s.getContexto());
+//			sDTO.setDescricao(s.getDescricao());
+//			sDTO.setId(s.getIdSistema());
+//			s.getMenu().forEach(i->{
+//				DataDTO d = new DataDTO();
+//				d.setCollapsedIcon(i.ge);
+//				mDTO.getData().add(e)
+//			});
+//			
+//		}
+//		return sDTO;
+//	}
 
 	public static Long getIdSequence(DataSource dataSource, String sequence) {
 		Long id = null;

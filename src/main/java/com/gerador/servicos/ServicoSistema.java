@@ -26,14 +26,14 @@ public class ServicoSistema implements IdSequence {
 
 		if (entidade.getIdSistema() == null) {
 			Long id = getNewId();
-			entidade.setIdSistema(id);
-			if (entidade.getMenu() != null) {
-				entidade.getMenu().forEach(item-> {
-					if (item.getIdMenu() == null) {
-						item.setIdSistema(id);
-					}
-				});
-			}
+//			entidade.setIdSistema(id);
+//			if (entidade.getMenu() != null) {
+//				entidade.getMenu().forEach(item-> {
+//					if (item.getIdMenu() == null) {
+//						item.setIdSistema(id);
+//					}
+//				});
+//			}
 		}
 		Sistema salva = rep.save(entidade);
 		return salva;

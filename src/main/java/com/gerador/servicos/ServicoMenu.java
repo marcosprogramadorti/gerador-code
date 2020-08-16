@@ -24,10 +24,10 @@ public class ServicoMenu implements IdSequence {
 
 	public Menu salvar(Menu entidade) {
 
-		if (entidade.getIdMenu() == null) {
-			Long id = getNewId();
-			entidade.setIdMenu(id);
-		}
+//		if (entidade.getIdMenu() == null) {
+//			Long id = getNewId();
+//			entidade.setIdMenu(id);
+//		}
 		Menu salva = rep.save(entidade);
 		return salva;
 
