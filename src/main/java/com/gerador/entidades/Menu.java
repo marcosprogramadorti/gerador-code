@@ -2,18 +2,19 @@ package com.gerador.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 @Entity
 @Table(name = "menu")
 public class Menu {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name = "menu_id", unique = true, nullable = false)
+	@Column(name = "menu_id", columnDefinition = "serial")
+	@Generated(GenerationTime.INSERT)
 	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)
