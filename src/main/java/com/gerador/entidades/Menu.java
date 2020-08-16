@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,9 +12,7 @@ import javax.persistence.Table;
 public class Menu {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "menu_id_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name = "menu_id", unique = true, nullable = false)
 	private Long idMenu;
 
