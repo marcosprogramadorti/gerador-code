@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import com.gerador.entidades.Menu;
 import com.gerador.entidades.Sistema;
 import com.gerador.nucleo.inter.IdSequence;
+import com.gerador.repositorys.IData;
+import com.gerador.repositorys.IDataInterno;
 import com.gerador.repositorys.IMenu;
 import com.gerador.repositorys.ISistema;
 
@@ -20,10 +22,16 @@ public class ServicoSistema implements IdSequence {
 
 	@Autowired
 	private ISistema rep;
-	
+
 	@Autowired
 	private IMenu repMenu;
-	
+
+	@Autowired
+	private IData repData;
+
+	@Autowired
+	private IDataInterno repDataInterno;
+
 	@Autowired
 	private DataSource dataSource;
 
@@ -41,21 +49,30 @@ public class ServicoSistema implements IdSequence {
 //			}
 		}
 		if (entidade.getMenu() != null) {
+			entidade.getMenu().getData().forEach(i -> {
+				if (i.getData() != null) {
+					repDataInterno.save(i.getData());
+				}
+				i.getChildren().forEach(it->{
+					repData.save(it);
+				});
+				if (i != null) {
+					repData.save(i);
+				}
+
+			});
 			Menu mSalvo = repMenu.save(entidade.getMenu());
 			entidade.setMenu(mSalvo);
+
 		}
 		Sistema salva = rep.save(entidade);
 		return salva;
 
 	}
-	
-	
 
 	public List<Sistema> lista() {
 		return rep.findAll();
 	}
-
-	
 
 	public Sistema buscarPorId(Long id) {
 		Optional<Sistema> r = rep.findById(id);
@@ -64,18 +81,12 @@ public class ServicoSistema implements IdSequence {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public Long getNewId() {
-		Long id = ServicoUtil.getIdSequence(dataSource, "sistema_id_seq"); 
+		Long id = ServicoUtil.getIdSequence(dataSource, "sistema_id_seq");
 		return id;
-		      
+
 	}
 
-	
-	
-
-
 }
-
-
