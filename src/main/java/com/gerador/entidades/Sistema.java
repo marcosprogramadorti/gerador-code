@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +17,8 @@ import javax.persistence.Table;
 public class Sistema {
 
 	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_sistema_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "sistema_id", columnDefinition = "serial")
 	private Long idSistema;
 	

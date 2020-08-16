@@ -2,7 +2,10 @@ package com.gerador.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Generated;
@@ -13,6 +16,8 @@ import org.hibernate.annotations.GenerationTime;
 public class Menu {
 
 	@Id
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "menu_menu_id_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "menu_id", columnDefinition = "serial")
 	private Long idMenu;
 
