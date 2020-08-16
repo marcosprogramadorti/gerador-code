@@ -17,7 +17,7 @@ public class Sistema {
 
 	@Id
 	@Column(name = "sistema_id", columnDefinition = "serial")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long idSistema;
 	
 	@Column(name = "sigla", unique = true, nullable = false)
