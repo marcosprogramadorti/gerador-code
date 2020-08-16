@@ -19,8 +19,8 @@ public class ServicoUtil {
 
 	public static Long getIdSequence(DataSource dataSource, String sequence) {
 		Long id = null;
-		ArrayList<String> output = new ArrayList<String>();
-		output.add("INICIO GET ID ...");
+		System.out.println("ServicoUtil.getIdSequence()");
+		System.out.println("INICIO GET ID ...");
 		try (Connection connection = dataSource.getConnection()) {
 
 			Statement stmt = connection.createStatement();
@@ -29,13 +29,17 @@ public class ServicoUtil {
 
 			while (rs.next()) {
 				id = (long) rs.getInt("nextval");
-				output.add("Get Id " + sequence + " : " + id);
+				System.out.println("ServicoUtil.getIdSequence()");
+				System.out.println("Get Id " + sequence + " : " + id);
+				
 			}
 
 		} catch (Exception e) {
-			output.add("ERRO GET ID ... " +  e.getStackTrace());
+			System.out.println("ServicoUtil.getIdSequence()");
+			System.err.println(e.getMessage());
+			
 		}
-		output.add("FIM GET ID ..." + id);
+		System.out.println("FIM GET ID ..." + id);
 		return id;
 
 	}
