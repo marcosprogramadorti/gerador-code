@@ -12,21 +12,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Menu;
-import com.gerador.repositorys.IMenu;
-import com.gerador.servicos.Servico;
+import com.gerador.servicos.ServicoMenu;
 
 
 
 
 @RestController
 @RequestMapping("/menu")
-public class MenuController  {
+public class MenuController {
 	
 	@Autowired
-    private Servico<Menu, Long> servico;
+    private ServicoMenu servico;
 	
-	@Autowired
-    private IMenu rep;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
@@ -35,24 +32,23 @@ public class MenuController  {
 	
 	@GetMapping("/lista")
 	public List<Menu> lista() {
-        return servico.lista(rep);
+        return servico.lista();
     }
 	
 	@GetMapping("/buscarPorId")
 	public Menu buscarPorId(Long id) {
-        return servico.buscarPorId(id, rep);
+        return servico.buscarPorId(id);
     }
-	
 	
 	
 	@PostMapping("/salvar")
 	public Menu salvar(@RequestBody Menu entidade) {
-       return servico.salvar(entidade, rep);
+       return servico.salvar(entidade);
        
     }
 	@PutMapping("/atualizar")
 	public Menu atualizar(Menu entidade) {
-       return servico.salvar(entidade, rep);
+       return servico.salvar(entidade);
        
     }
 

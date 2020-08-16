@@ -2,8 +2,6 @@ package com.gerador.entidades;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,12 +10,11 @@ import javax.persistence.Table;
 public class Menu {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "menu_id")
+	@Column(name = "menu_id", unique = true, nullable = false)
 	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)
-	private int idSistema;
+	private Long idSistema;
 	private String label;
 	private String collapsedIcon;
 	private String expandedIcon;
@@ -31,10 +28,10 @@ public class Menu {
 	public void setIdMenu(Long idMenu) {
 		this.idMenu = idMenu;
 	}
-	public int getIdSistema() {
+	public Long getIdSistema() {
 		return idSistema;
 	}
-	public void setIdSistema(int idSistema) {
+	public void setIdSistema(Long idSistema) {
 		this.idSistema = idSistema;
 	}
 	public String getLabel() {

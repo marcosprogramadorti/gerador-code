@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
+import com.gerador.entidades.Sistema;
 import com.gerador.repositorys.FindByChave;
 import com.gerador.repositorys.FindByDescricao;
 import com.gerador.repositorys.FindByNome;
@@ -18,7 +19,6 @@ public class Servico<T, ID> implements IServico<T, ID> {
 	@Override
 	public T salvar(T entidade, JpaRepository<T, ID> rep) {
 		T salva = rep.save(entidade);
-		rep.flush();
 		return salva;
 	}
 

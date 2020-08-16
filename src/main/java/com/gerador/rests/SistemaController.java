@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gerador.entidades.Sistema;
-import com.gerador.repositorys.ISistema;
-import com.gerador.servicos.Servico;
+import com.gerador.servicos.ServicoSistema;
 
 
 
@@ -23,10 +22,8 @@ import com.gerador.servicos.Servico;
 public class SistemaController {
 	
 	@Autowired
-    private Servico<Sistema, Long> servico;
+    private ServicoSistema servico;
 	
-	@Autowired
-    private ISistema rep;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String recurso() {
@@ -35,23 +32,23 @@ public class SistemaController {
 	
 	@GetMapping("/lista")
 	public List<Sistema> lista() {
-        return servico.lista(rep);
+        return servico.lista();
     }
 	
 	@GetMapping("/buscarPorId")
 	public Sistema buscarPorId(Long id) {
-        return servico.buscarPorId(id, rep);
+        return servico.buscarPorId(id);
     }
 	
 	
 	@PostMapping("/salvar")
 	public Sistema salvar(@RequestBody Sistema entidade) {
-       return servico.salvar(entidade, rep);
+       return servico.salvar(entidade);
        
     }
 	@PutMapping("/atualizar")
 	public Sistema atualizar(Sistema entidade) {
-       return servico.salvar(entidade, rep);
+       return servico.salvar(entidade);
        
     }
 
