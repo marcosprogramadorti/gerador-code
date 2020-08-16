@@ -9,6 +9,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gerador.entidades.Data;
 import com.gerador.entidades.Menu;
 import com.gerador.entidades.Sistema;
 import com.gerador.nucleo.inter.IdSequence;
@@ -50,15 +51,8 @@ public class ServicoSistema implements IdSequence {
 		}
 		if (entidade.getMenu() != null) {
 			entidade.getMenu().getData().forEach(i -> {
-				if (i.getData() != null) {
-					repDataInterno.save(i.getData());
-				}
-				i.getChildren().forEach(it->{
-					repData.save(it);
-				});
-				if (i != null) {
-					repData.save(i);
-				}
+				
+				salvaData(i);
 
 			});
 			Menu mSalvo = repMenu.save(entidade.getMenu());
@@ -68,6 +62,18 @@ public class ServicoSistema implements IdSequence {
 		Sistema salva = rep.save(entidade);
 		return salva;
 
+	}
+
+	private void salvaData(Data d) {
+		if (d.getChildren().size()>0) {
+			d.getChildren().forEach(df->{
+				salvaData(df);
+			});
+		}
+		if (d.getData()!=null) {
+			repDataInterno.save(d.getData());
+		}
+		repData.save(d);
 	}
 
 	public List<Sistema> lista() {
