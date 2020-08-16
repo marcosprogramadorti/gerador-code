@@ -9,8 +9,10 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gerador.entidades.Menu;
 import com.gerador.entidades.Sistema;
 import com.gerador.nucleo.inter.IdSequence;
+import com.gerador.repositorys.IMenu;
 import com.gerador.repositorys.ISistema;
 
 @Service
@@ -18,6 +20,9 @@ public class ServicoSistema implements IdSequence {
 
 	@Autowired
 	private ISistema rep;
+	
+	@Autowired
+	private IMenu repMenu;
 	
 	@Autowired
 	private DataSource dataSource;
@@ -35,10 +40,16 @@ public class ServicoSistema implements IdSequence {
 //				});
 //			}
 		}
+		if (entidade.getMenu() != null) {
+			Menu mSalvo = repMenu.save(entidade.getMenu());
+			entidade.setMenu(mSalvo);
+		}
 		Sistema salva = rep.save(entidade);
 		return salva;
 
 	}
+	
+	
 
 	public List<Sistema> lista() {
 		return rep.findAll();
