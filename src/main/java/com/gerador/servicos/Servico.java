@@ -18,6 +18,7 @@ public class Servico<T, ID> implements IServico<T, ID> {
 	@Override
 	public T salvar(T entidade, JpaRepository<T, ID> rep) {
 		T salva = rep.save(entidade);
+		rep.flush();
 		return salva;
 	}
 
