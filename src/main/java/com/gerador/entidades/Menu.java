@@ -14,7 +14,6 @@ public class Menu {
 
 	@Id
 	@Column(name = "menu_id", columnDefinition = "serial")
-	@Generated(GenerationTime.INSERT)
 	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)
