@@ -4,22 +4,28 @@ package com.gerador.servicos;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.Menu;
+import com.gerador.nucleo.inter.IdSequence;
 import com.gerador.repositorys.IMenu;;
 
 @Service
-public class ServicoMenu {
+public class ServicoMenu implements IdSequence {
 
 	@Autowired
 	private IMenu rep;
+	
+	@Autowired
+	private DataSource dataSource;
 
 	public Menu salvar(Menu entidade) {
 
 		if (entidade.getIdMenu() == null) {
-			Long id = rep.getNewId();
+			Long id = getNewId();
 			entidade.setIdMenu(id);
 		}
 		Menu salva = rep.save(entidade);
@@ -37,6 +43,13 @@ public class ServicoMenu {
 			return r.get();
 		}
 		return null;
+	}
+	
+	@Override
+	public Long getNewId() {
+		Long id = ServicoUtil.getIdSequence(dataSource, "menu_id_seq"); 
+		return id;
+		      
 	}
 
 }

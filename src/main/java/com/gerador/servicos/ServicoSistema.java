@@ -4,22 +4,28 @@ package com.gerador.servicos;
 import java.util.List;
 import java.util.Optional;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.gerador.entidades.Sistema;
+import com.gerador.nucleo.inter.IdSequence;
 import com.gerador.repositorys.ISistema;
 
 @Service
-public class ServicoSistema {
+public class ServicoSistema implements IdSequence {
 
 	@Autowired
 	private ISistema rep;
+	
+	@Autowired
+	private DataSource dataSource;
 
 	public Sistema salvar(Sistema entidade) {
 
 		if (entidade.getIdSistema() == null) {
-			Long id = rep.getNewId();
+			Long id = getNewId();
 			entidade.setIdSistema(id);
 			if (entidade.getMenu() != null) {
 				entidade.getMenu().forEach(item-> {
@@ -47,5 +53,18 @@ public class ServicoSistema {
 		}
 		return null;
 	}
+	
+	@Override
+	public Long getNewId() {
+		Long id = ServicoUtil.getIdSequence(dataSource, "sistema_id_seq"); 
+		return id;
+		      
+	}
+
+	
+	
+
 
 }
+
+

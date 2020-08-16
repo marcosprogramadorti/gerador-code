@@ -3,6 +3,9 @@ package com.gerador.servicos;
 import java.net.InterfaceAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -10,7 +13,30 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.sql.DataSource;
+
 public class ServicoUtil {
+	
+	public static Long getIdSequence(DataSource dataSource, String sequence ) {
+			Long id = null;
+			ArrayList<String> output = new ArrayList<String>();
+			try (Connection connection = dataSource.getConnection()) {
+			     
+				 Statement stmt = connection.createStatement();
+				  String q = "select currval('" + sequence + "')";
+			      ResultSet rs = stmt.executeQuery(q);
+			      
+			      while (rs.next()) {
+			    	id = (long) rs.getInt("nextval");
+			    	output.add("Get Id " + sequence + " : " + id);
+			      }
+			       
+			}catch (Exception e) {
+				
+			}
+			return id;
+		
+	}
 
 	public static void infoDoDispositivo(String[] args) throws SocketException {
 
