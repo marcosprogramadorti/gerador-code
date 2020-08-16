@@ -4,13 +4,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 
 @Entity
 @Table(name = "sistema")
@@ -18,7 +17,7 @@ public class Sistema {
 
 	@Id
 	@Column(name = "sistema_id", columnDefinition = "serial")
-	@Generated(GenerationTime.INSERT)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idSistema;
 	
 	@Column(name = "sigla", unique = true, nullable = false)
