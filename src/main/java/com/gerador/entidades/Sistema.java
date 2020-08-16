@@ -1,6 +1,6 @@
 package com.gerador.entidades;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,18 +17,22 @@ import javax.persistence.Table;
 public class Sistema {
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_sistema_id_seq", allocationSize = 1)
+	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "sistema_id", unique = true, nullable = false)
 	private Long idSistema;
+	
+	@Column(name = "sigla", unique = true, nullable = false)
 	private String sigla;
+	@Column(name = "contexto", unique = true, nullable = false)
 	private String contexto;
+	
 	private String descricao;
 
 	@OneToMany
 	@JoinColumn(name = "sistema_id")
-	private Set<Menu> menu;
-
+	private List<Menu> menu;
+	
 	public Long getIdSistema() {
 		return idSistema;
 	}
@@ -61,11 +65,11 @@ public class Sistema {
 		this.descricao = descricao;
 	}
 
-	public Set<Menu> getMenu() {
+	public List<Menu> getMenu() {
 		return menu;
 	}
 
-	public void setMenu(Set<Menu> menu) {
+	public void setMenu(List<Menu> menu) {
 		this.menu = menu;
 	}
 
