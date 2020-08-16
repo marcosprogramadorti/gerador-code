@@ -20,7 +20,7 @@ public class Sistema {
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_sistema_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 	@Column(name = "sistema_id", unique = true, nullable = false)
-	private int idSistema;
+	private Long idSistema;
 	private String sigla;
 	private String contexto;
 	private String descricao;
@@ -29,11 +29,11 @@ public class Sistema {
 	@JoinColumn(name = "sistema_id")
 	private Set<Menu> menu;
 
-	public int getIdSistema() {
+	public Long getIdSistema() {
 		return idSistema;
 	}
 
-	public void setIdSistema(int idSistema) {
+	public void setIdSistema(Long idSistema) {
 		this.idSistema = idSistema;
 	}
 

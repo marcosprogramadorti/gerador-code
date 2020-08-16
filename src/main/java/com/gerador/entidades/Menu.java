@@ -17,7 +17,7 @@ public class Menu {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
 
 	@Column(name = "menu_id", unique = true, nullable = false)
-	private int idMenu;
+	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)
 	private int idSistema;
@@ -27,10 +27,11 @@ public class Menu {
 	private String url;
 	private String externo;
 	private String roles;
-	public int getIdMenu() {
+	
+	public Long getIdMenu() {
 		return idMenu;
 	}
-	public void setIdMenu(int idMenu) {
+	public void setIdMenu(Long idMenu) {
 		this.idMenu = idMenu;
 	}
 	public int getIdSistema() {
