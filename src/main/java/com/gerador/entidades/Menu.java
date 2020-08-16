@@ -13,7 +13,7 @@ public class Menu {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "menu_id", unique = true, nullable = false)
+	@Column(name = "menu_id")
 	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)
