@@ -18,7 +18,7 @@ public class Menu {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "menu_menu_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column(name = "menu_id", columnDefinition = "serial")
+	@Column(name = "menu_id", unique = true, nullable = false)
 	private Long idMenu;
 
 	@Column(name = "sistema_id", nullable = false)

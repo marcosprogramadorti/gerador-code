@@ -19,7 +19,7 @@ public class Sistema {
 	@Id
 	@SequenceGenerator(name = "pk_sequence", sequenceName = "sistema_sistema_id_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pk_sequence")
-	@Column(name = "sistema_id", columnDefinition = "serial")
+	@Column(name = "sistema_id", unique = true, nullable = false)
 	private Long idSistema;
 	
 	@Column(name = "sigla", unique = true, nullable = false)
