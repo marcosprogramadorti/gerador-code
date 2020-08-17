@@ -52,6 +52,11 @@ public class SistemaController {
        return servico.salvar(entidade);
        
     }
+	
+	@GetMapping("/idSeq")
+	public String idSeq() {
+        return servico.getNewId().toString();
+    }
 
 	
 	
