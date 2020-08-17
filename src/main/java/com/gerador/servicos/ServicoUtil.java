@@ -55,7 +55,13 @@ public class ServicoUtil {
 			ResultSet rs = stmt.executeQuery(q);
 
 			while (rs.next()) {
-				id = (long) rs.getInt("nextval");
+				try {
+					id = Long.parseLong(rs.getString(0));
+				} catch (Exception e) {
+					id = Long.parseLong("0");
+				}
+				
+				
 				System.out.println("ServicoUtil.getIdSequence()");
 				System.out.println("Get Id " + sequence + " : " + id);
 				
