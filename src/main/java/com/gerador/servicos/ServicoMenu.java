@@ -46,8 +46,8 @@ public class ServicoMenu implements IdSequence {
 	}
 	
 	@Override
-	public Long getNewId() {
-		Long id = ServicoUtil.getIdSequence(dataSource, "menu_id_seq"); 
+	public Long getNewId(String seq) {
+		Long id = ServicoUtil.getIdSequence(dataSource, seq); 
 		return id;
 		      
 	}
