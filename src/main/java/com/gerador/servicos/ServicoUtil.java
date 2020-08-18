@@ -51,7 +51,7 @@ public class ServicoUtil {
 		try (Connection connection = dataSource.getConnection()) {
 
 			Statement stmt = connection.createStatement();
-			String q = "select currval('" + sequence + "')";
+			String q = "select nextval('" + sequence + "'::regclass)";
 			ResultSet rs = stmt.executeQuery(q);
 
 			while (rs.next()) {
