@@ -55,7 +55,7 @@ public class SistemaController {
 	
 	@GetMapping("/idSeq")
 	public String idSeq() {
-        return servico.getNewId().toString();
+        return servico.getNewId("menu_id_seq").toString();
     }
 
 	

@@ -39,15 +39,8 @@ public class ServicoSistema implements IdSequence {
 	public Sistema salvar(Sistema entidade) {
 
 		if (entidade.getIdSistema() == null) {
-			Long id = getNewId();
-//			entidade.setIdSistema(id);
-//			if (entidade.getMenu() != null) {
-//				entidade.getMenu().forEach(item-> {
-//					if (item.getIdMenu() == null) {
-//						item.setIdSistema(id);
-//					}
-//				});
-//			}
+			Long id = getNewId("sistema_id_seq");
+			entidade.setIdSistema(id);
 		}
 		if (entidade.getMenu() != null) {
 			entidade.getMenu().getData().forEach(i -> {
@@ -70,6 +63,11 @@ public class ServicoSistema implements IdSequence {
 				salvaData(df);
 			});
 		}
+		if (d.getKey() == null) {
+			Long id = getNewId("menu_id_seq");
+			d.setKey(id);
+			d.getData().setIdDataInterno(id);
+		}
 		if (d.getData()!=null) {
 			repDataInterno.save(d.getData());
 		}
@@ -89,8 +87,8 @@ public class ServicoSistema implements IdSequence {
 	}
 
 	@Override
-	public Long getNewId() {
-		Long id = ServicoUtil.getIdSequence(dataSource, "sistema_id_seq");
+	public Long getNewId(String seq) {
+		Long id = ServicoUtil.getIdSequence(dataSource, seq);
 		return id;
 
 	}

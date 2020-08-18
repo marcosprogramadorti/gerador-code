@@ -16,6 +16,8 @@ public class Sistema {
 	private String sigla;
 	private String nome;
 	private String descricao;
+	private String roles;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_menu")
@@ -67,6 +69,14 @@ public class Sistema {
 
 	public void setMenu(Menu menu) {
 		this.menu = menu;
+	}
+
+	public String getRoles() {
+		return roles;
+	}
+
+	public void setRoles(String roles) {
+		this.roles = roles;
 	}
 	
 	
