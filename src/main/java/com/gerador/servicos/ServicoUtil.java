@@ -21,7 +21,7 @@ import com.gerador.dto.SistemaDTO;
 import com.gerador.entidades.Sistema;
 
 public class ServicoUtil {
-	
+
 //	public static SistemaDTO ConvertSitemaTOSistemaDTO(Sistema s) {
 //		
 //		SistemaDTO sDTO = new SistemaDTO();
@@ -52,26 +52,23 @@ public class ServicoUtil {
 
 			Statement stmt = connection.createStatement();
 			String q = "select nextval('" + sequence + "'::regclass)";
+			System.out.println(q);
 			ResultSet rs = stmt.executeQuery(q);
 
 			while (rs.next()) {
-				try {
-					System.out.println(rs.getInt(0));
-					id = (long) rs.getInt(0);
-				} catch (Exception e) {
-					id = Long.parseLong("0");
-				}
-				
-				
+
+				System.out.println("rs.getString(\"nextval\") -->> " + rs.getString("nextval"));
+				id = Long.parseLong(rs.getString("nextval"));
+
 				System.out.println("ServicoUtil.getIdSequence()");
 				System.out.println("Get Id " + sequence + " : " + id);
-				
+
 			}
 
 		} catch (Exception e) {
 			System.out.println("ServicoUtil.getIdSequence()");
 			System.err.println(e.getMessage());
-			
+
 		}
 		System.out.println("FIM GET ID ..." + id);
 		return id;
