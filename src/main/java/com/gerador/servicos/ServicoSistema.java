@@ -45,6 +45,12 @@ public class ServicoSistema implements IdSequence {
 			System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
 		}
 		if (entidade.getMenu() != null) {
+			if (entidade.getMenu().getIdMenu()==null) {
+				Long id = getNewId("menu_id_seq");
+				entidade.getMenu().setIdMenu(id);
+			}
+			
+			
 			entidade.getMenu().getData().forEach(i -> {
 				
 				salvaData(i);
@@ -66,7 +72,7 @@ public class ServicoSistema implements IdSequence {
 			});
 		}
 		if (d.getKey() == null) {
-			Long id = getNewId("menu_id_seq");
+			Long id = getNewId("data_id_seq");
 			d.setKey(id);
 			d.getData().setIdDataInterno(id);
 		}
