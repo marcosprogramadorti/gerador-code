@@ -1,9 +1,12 @@
 package com.gerador.entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,6 +14,8 @@ import javax.persistence.Table;
 public class Sistema {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sistema_seq_gen")
+	@SequenceGenerator(name = "sistema_seq_gen", sequenceName = "sistema_id_seq")
 	private Long idSistema;
 	private String contexto;
 	private String sigla;
