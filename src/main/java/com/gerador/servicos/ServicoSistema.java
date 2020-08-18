@@ -38,12 +38,12 @@ public class ServicoSistema implements IdSequence {
 
 	public Sistema salvar(Sistema entidade) {
 		System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
-//		if (entidade.getIdSistema() == null) {
-//			Long id = getNewId("sistema_id_seq");
-//			System.out.println("getNewId >>" + id  );
-//			entidade.setIdSistema(id);
-//			System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
-//		}
+		if (entidade.getIdSistema() == null) {
+			Long id = getNewId("sistema_id_seq");
+			System.out.println("getNewId >>" + id  );
+			entidade.setIdSistema(id);
+			System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
+		}
 		if (entidade.getMenu() != null) {
 			entidade.getMenu().getData().forEach(i -> {
 				
@@ -65,11 +65,11 @@ public class ServicoSistema implements IdSequence {
 				salvaData(df);
 			});
 		}
-//		if (d.getKey() == null) {
-//			Long id = getNewId("menu_id_seq");
-//			d.setKey(id);
-//			d.getData().setIdDataInterno(id);
-//		}
+		if (d.getKey() == null) {
+			Long id = getNewId("menu_id_seq");
+			d.setKey(id);
+			d.getData().setIdDataInterno(id);
+		}
 		if (d.getData()!=null) {
 			repDataInterno.save(d.getData());
 		}

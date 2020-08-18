@@ -44,6 +44,7 @@ public class SistemaController {
 	
 	@PostMapping("/salvar")
 	public Sistema salvar(@RequestBody Sistema entidade) {
+		System.out.println("/salvar - entidade.getIdSistema() >>" + entidade.getIdSistema()  );
        return servico.salvar(entidade);
        
     }
