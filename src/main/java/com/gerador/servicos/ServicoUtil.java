@@ -56,7 +56,8 @@ public class ServicoUtil {
 
 			while (rs.next()) {
 				try {
-					id = Long.parseLong(rs.getString(0));
+					System.out.println(rs.getInt(0));
+					id = (long) rs.getInt(0);
 				} catch (Exception e) {
 					id = Long.parseLong("0");
 				}
