@@ -37,10 +37,12 @@ public class ServicoSistema implements IdSequence {
 	private DataSource dataSource;
 
 	public Sistema salvar(Sistema entidade) {
-
+		System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
 		if (entidade.getIdSistema() == null) {
 			Long id = getNewId("sistema_id_seq");
+			System.out.println("getNewId >>" + id  );
 			entidade.setIdSistema(id);
+			System.out.println("entidade.getIdSistema() >>" + entidade.getIdSistema()  );
 		}
 		if (entidade.getMenu() != null) {
 			entidade.getMenu().getData().forEach(i -> {
