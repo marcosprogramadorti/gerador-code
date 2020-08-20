@@ -93,6 +93,9 @@ public class ServicoSistema implements IdSequence {
 		}
 		return null;
 	}
+	public void excluirPorId(Long id) {
+		rep.deleteById(id);
+	}
 
 	@Override
 	public Long getNewId(String seq) {
